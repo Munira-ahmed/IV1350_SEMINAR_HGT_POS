@@ -1,4 +1,4 @@
-package se.kth.iv1350.pos.integration;
+package se.kth.iv1350.pos.util;
 
 import java.sql.Timestamp;
 

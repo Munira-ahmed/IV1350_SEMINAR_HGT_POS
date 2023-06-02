@@ -1,10 +1,8 @@
-package se.kth.iv1350.pos.integration;
+package se.kth.iv1350.pos.view;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import se.kth.iv1350.pos.view.RevenueDisplay;
 
 public class TotalRevenueFileOutput extends RevenueDisplay{
     private PrintWriter logFile;
@@ -19,4 +17,4 @@ public class TotalRevenueFileOutput extends RevenueDisplay{
     protected void writeRevenue(){
         logFile.println("Total revenue = " + Double.toString(totalRevenue));
     }
-}
+} 
