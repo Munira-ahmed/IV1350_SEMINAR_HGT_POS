@@ -1,8 +1,10 @@
 package se.kth.iv1350.pos.controller;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.integration.DiscountRegistry;
 import se.kth.iv1350.pos.integration.ExternalInventorySystem;
@@ -101,26 +103,20 @@ public class InventoryFailException extends Exception {
         HashMap<ItemDTO,Integer> soldItems = saleInformation.getSoldItems();
         externalInventorySystem.uppdateInventory(soldItems);
         saleInformation.uppdateSaleInformation();
-        notifyObservers();
+        saleInformation.notifyObservers();
         return saleInformation;
     }
 
-/**
- * The specified observer will be notified when a sale
- * has been ended. There will be notifications only for
- * sales that are started after this method is called.
- *
-* @param revenueObserver The observer to notify.
-*/
-public void addSaleObserver(RevenueObserver revenueObserver) { 
-    revenueObservers.add(revenueObserver);
-}
-
-private void notifyObservers() {
-    for (RevenueObserver obs : revenueObservers) {
-            obs.completedSale(saleInformation.getTotalPrice());
-        }
-}
+       /**
+     * The specified observer will be notified when a sale
+     * has been ended. There will be notifications only for
+     * sales that are started after this method is called.
+     *
+     * @param revenueObserver The observer to notify.
+     */
+    public void addSaleObserver(RevenueObserver revenueObserver) {
+        revenueObservers.add(revenueObserver);
+    }
 
 /**
 * Print the receipt out of the sale.

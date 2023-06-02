@@ -20,6 +20,7 @@ public class View {
     private ErrorMessageHandler errorMessageHandler;
     private LogHandler logHandler;
     
+    
 
 /**
 * Create the View.
